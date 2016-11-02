@@ -1,0 +1,22 @@
+{
+  "devDependencies": {
+    "gulp": "^3.9.0"
+  },
+  "name": "austeve-icebreaker",
+  "description": "IceBreaker plugin - AUSteve",
+  "version": "1.0.0",
+  "main": "gulpfile.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/australiansteve/wp-plugin-austeve-icebreaker"
+  },
+  "author": "AustralianSteve",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/australiansteve/wp-plugin-austeve-icebreaker/issues"
+  },
+  "homepage": "https://github.com/australiansteve/wp-plugin-austeve-icebreaker"
+}
