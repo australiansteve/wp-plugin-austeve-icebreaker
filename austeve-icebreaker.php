@@ -2,8 +2,8 @@
 /**
  * Plugin Name: AUSteve Icebreaker plugin
  * Plugin URI: https://github.com/australiansteve/wp-plugin-austeve-icebreaker
- * Description: Calgary IceBreaker website plugin
- * Version: 1.0.0
+ * Description: Calgary IceBreaker website functionality plugin
+ * Version: 2017.1.0.0
  * Author: AustralianSteve
  * Author URI: http://AustralianSteve.com
  * License: GPL2
@@ -19,6 +19,10 @@ function austeve_give_custom_form_fields( $form_id ) {
     ?>
     <div id="give-dipster-donation">
         <input type="hidden" id="user_donation" name="user_donation" value=""/>
+    </div>
+    <div id="give-dipster-message" style="display:none">
+        <label for="donation_message">Leave a message of support with your donation:</label>
+        <textarea rows="4" id="donation_message" name="donation_message" value=""></textarea>
     </div>
     <?php
 }
@@ -55,6 +59,7 @@ add_action( 'give_checkout_error_checks', 'austeve_give_validate_custom_fields',
  */
 function austeve_give_store_custom_fields( $payment_meta ) {
     $payment_meta['user_donation'] = isset( $_POST['user_donation'] ) ? implode( "n", array_map( 'sanitize_text_field', explode( "n", intval( $_POST['user_donation'] ) ) ) ) : '';
+    $payment_meta['donation_message'] = isset( $_POST['donation_message'] ) ? implode( "n", array_map( 'sanitize_text_field', explode( "n", $_POST['donation_message'] ) ) ) : '';
 
     return $payment_meta;
 }
@@ -91,9 +96,24 @@ function austeve_give_donation_details( $payment_id ) {
     );
 
     ?>
-    <td class="donation-to">
-        <?php wp_dropdown_users( $args );  ?>
-    </td>
+            <td class="donation-to">
+                <?php wp_dropdown_users( $args );  ?>
+            </td>
+
+        </tr>
+    </tbody></table>
+
+    <!-- Cheeckiiliy start a new table here -->
+    <table style="width:100%;">
+        <thead>
+            <tr>
+                <th>Message</th>
+            </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><?php echo array_key_exists('donation_message', $payment_meta) ? $payment_meta['donation_message'] : 'None'; ?> </td>
+
 <?php
 }
 

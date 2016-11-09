@@ -4,7 +4,7 @@
   },
   "name": "austeve-icebreaker",
   "description": "IceBreaker plugin - AUSteve",
-  "version": "1.0.0",
+  "version": "2017.1.0.0",
   "main": "gulpfile.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
